@@ -1,31 +1,98 @@
 {
   "name": "package-pilot",
-  "displayName": "package-pilot",
-  "description": "Package Pilot analyzes your projects to recommend better, more secure, and more efficient packages. Stop manually researching alternatives - let Package Pilot actively reccomend the perfect libraries!",
+  "displayName": "Package Pilot",
+  "description": "Package Pilot analyzes your projects to recommend better, more secure, and more efficient packages. Stop manually researching alternatives - let Package Pilot actively recommend the perfect libraries!",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.98.0"
   },
   "categories": [
+    "Programming Languages",
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Package Pilot",
+      "properties": {
+        "packagePilot.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API key for enhanced package recommendations"
+        }
+      }
+    },
     "commands": [
       {
         "command": "packagePilot.analyzeCurrentFile",
-        "title": "PackagePilot: Analyze Current File"
+        "title": "Package Pilot: Analyze File"
       },
       {
-        "command": "packagePilot.analyzeSelectedFiles",
-        "title": "PackagePilot: Analyze Selected Files"
+        "command": "packagePilot.analyzeFolder",
+        "title": "Package Pilot: Analyze Folder"
       },
       {
         "command": "packagePilot.analyzeProject",
-        "title": "PackagePilot: Analyze Project"
+        "title": "Package Pilot: Analyze Project"
+      },
+      {
+        "command": "packagePilot.analyzePickedFiles",
+        "title": "Package Pilot: Pick Files to Analyze"
+      },
+      {
+        "command": "packagePilot.analyzeSelectedFiles",
+        "title": "Package Pilot: Analyze Selected Files or Folders"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "packagePilot.analyzeCurrentFile",
+          "when": "resourceExtname =~ /\\.(js|jsx|ts|tsx)$/ && !explorerResourceIsFolder",
+          "group": "7_modification"
+        },
+        {
+          "command": "packagePilot.analyzeFolder",
+          "when": "explorerResourceIsFolder",
+          "group": "7_modification"
+        },
+        {
+          "command": "packagePilot.analyzeSelectedFiles",
+          "when": "explorerResourceSelected",
+          "group": "7_modification"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "packagePilot.analyzeCurrentFile",
+          "when": "editorLangId =~ /(javascript|typescript|javascriptreact|typescriptreact)/",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "packagePilot.analyzeCurrentFile",
+          "when": "editorLangId =~ /(javascript|typescript|javascriptreact|typescriptreact)/"
+        },
+        {
+          "command": "packagePilot.analyzeFolder",
+          "when": "false"
+        },
+        {
+          "command": "packagePilot.analyzePickedFiles"
+        },
+        {
+          "command": "packagePilot.analyzeProject"
+        },
+        {
+          "command": "packagePilot.analyzeSelectedFiles",
+          "when": "false"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
@@ -42,7 +109,6 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/hammerjs": "^2.0.46",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@types/vscode": "^1.98.0",
