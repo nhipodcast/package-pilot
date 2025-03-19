@@ -13,11 +13,11 @@ const errorString = (error: unknown): string => {
 
 // Activation function for the extension
 export function activate(context: vscode.ExtensionContext) {
-  console.log("PackageRadar is now active");
+  console.log("packagePilot is now active");
 
   // Register command to analyze current file
   let analyzeCurrentFileCommand = vscode.commands.registerCommand(
-    "packageRadar.analyzeCurrentFile",
+    "packagePilot.analyzeCurrentFile",
     async () => {
       try {
         const activeEditor = vscode.window.activeTextEditor;
@@ -96,7 +96,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Register command to analyze project structure
   let analyzeProjectCommand = vscode.commands.registerCommand(
-    "packageRadar.analyzeProject",
+    "packagePilot.analyzeProject",
     async (selectedResource) => {
       try {
         if (!selectedResource) {
@@ -172,7 +172,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Register command to analyze selected files
   let analyzeSelectedFilesCommand = vscode.commands.registerCommand(
-    "packageRadar.analyzeSelectedFiles",
+    "packagePilot.analyzeSelectedFiles",
     async () => {
       try {
         // Get all JS/TS files in the workspace
@@ -556,8 +556,8 @@ function displayPackageAnalysis(
 ): void {
   // Create webview panel
   const panel = vscode.window.createWebviewPanel(
-    "packageRadar",
-    "PackageRadar Analysis",
+    "packagePilot",
+    "packagePilot Analysis",
     vscode.ViewColumn.One,
     {
       enableScripts: true,
@@ -715,7 +715,7 @@ function generateAnalysisHTML(analysis: any, packageData: any): string {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>PackageRadar Analysis</title>
+      <title>packagePilot Analysis</title>
       <style>
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -902,7 +902,7 @@ function generateAnalysisHTML(analysis: any, packageData: any): string {
     </head>
     <body>
       <div class="header">
-        <h1>PackageRadar Analysis</h1>
+        <h1>packagePilot Analysis</h1>
       </div>
 
       <div class="summary">
@@ -934,5 +934,5 @@ function generateAnalysisHTML(analysis: any, packageData: any): string {
 
 // This method is called when your extension is deactivated
 export function deactivate() {
-  console.log("PackageRadar is now deactivated");
+  console.log("packagePilot is now deactivated");
 }

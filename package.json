@@ -14,16 +14,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "packageRadar.analyzeCurrentFile",
-        "title": "PackageRadar: Analyze Current File"
+        "command": "packagePilot.analyzeCurrentFile",
+        "title": "packagePilot: Analyze Current File"
       },
       {
-        "command": "packageRadar.analyzeSelectedFiles",
-        "title": "PackageRadar: Analyze Selected Files"
+        "command": "packagePilot.analyzeSelectedFiles",
+        "title": "packagePilot: Analyze Selected Files"
       },
       {
-        "command": "packageRadar.analyzeProject",
-        "title": "PackageRadar: Analyze Project"
+        "command": "packagePilot.analyzeProject",
+        "title": "packagePilot: Analyze Project"
       }
     ]
   },
