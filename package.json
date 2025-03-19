@@ -15,15 +15,15 @@
     "commands": [
       {
         "command": "packagePilot.analyzeCurrentFile",
-        "title": "packagePilot: Analyze Current File"
+        "title": "PackagePilot: Analyze Current File"
       },
       {
         "command": "packagePilot.analyzeSelectedFiles",
-        "title": "packagePilot: Analyze Selected Files"
+        "title": "PackagePilot: Analyze Selected Files"
       },
       {
         "command": "packagePilot.analyzeProject",
-        "title": "packagePilot: Analyze Project"
+        "title": "PackagePilot: Analyze Project"
       }
     ]
   },
