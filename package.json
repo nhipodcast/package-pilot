@@ -18,10 +18,6 @@
         "title": "PackagePilot: Analyze Current File"
       },
       {
-        "command": "packagePilot.analyzeSelectedFiles",
-        "title": "PackagePilot: Analyze Selected Files"
-      },
-      {
         "command": "packagePilot.analyzeProject",
         "title": "PackagePilot: Analyze Project"
       }
